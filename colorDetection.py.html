@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>colorDetection.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+colorDetection.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">cv2.cv2 </span><span class="s0">as </span><span class="s1">cv2</span>
+<span class="s0">import </span><span class="s1">numpy </span><span class="s0">as </span><span class="s1">np</span>
+
+<span class="s0">def </span><span class="s1">mouse_click(event</span><span class="s0">, </span><span class="s1">x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s1">flags</span><span class="s0">, </span><span class="s1">param):</span>
+    <span class="s0">if </span><span class="s1">event == cv2.EVENT_LBUTTONDOWN:</span>
+        <span class="s1">blue = img[x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s2">0</span><span class="s1">]</span>
+        <span class="s1">green = img[x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s2">1</span><span class="s1">]</span>
+        <span class="s1">red = img[x</span><span class="s0">, </span><span class="s1">y</span><span class="s0">, </span><span class="s2">2</span><span class="s1">]</span>
+        <span class="s1">cv2.circle(img</span><span class="s0">, </span><span class="s1">(x</span><span class="s0">, </span><span class="s1">y)</span><span class="s0">, </span><span class="s2">3</span><span class="s0">, </span><span class="s1">(</span><span class="s2">0</span><span class="s0">, </span><span class="s2">0</span><span class="s0">, </span><span class="s2">255</span><span class="s1">)</span><span class="s0">, </span><span class="s1">-</span><span class="s2">1</span><span class="s1">)</span>
+        <span class="s1">colordetect = np.zeros((</span><span class="s2">512</span><span class="s0">, </span><span class="s2">512</span><span class="s0">, </span><span class="s2">3</span><span class="s1">)</span><span class="s0">, </span><span class="s1">np.uint8)</span>
+        <span class="s1">colordetect [:] = [blue</span><span class="s0">, </span><span class="s1">green</span><span class="s0">, </span><span class="s1">red]</span>
+        
+        <span class="s1">cv2.imshow(</span><span class="s3">'color'</span><span class="s0">, </span><span class="s1">colordetect)</span>
+
+<span class="s1">img = cv2.imread(</span><span class="s3">'Images\RYB.png'</span><span class="s1">)</span>
+<span class="s1">cv2.imshow(</span><span class="s3">'ImageWindow'</span><span class="s0">, </span><span class="s1">img)</span>
+<span class="s1">points = []</span>
+<span class="s1">cv2.setMouseCallback(</span><span class="s3">'ImageWindow'</span><span class="s0">, </span><span class="s1">mouse_click)</span>
+<span class="s1">cv2.waitKey(</span><span class="s2">0</span><span class="s1">)</span>
+<span class="s1">cv2.destroyAllWindows()</span>
+</pre>
+</body>
+</html>
